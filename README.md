@@ -437,7 +437,7 @@ Custom cells
 
 FXForms provides default cell implementations for all supported fields. You may wish to provide additional cell classes for custom field types, or even replace all of the FXForm cells with custom versions for your application.
 
-There are two levels of customisation possible for cells. The simplest option is to subclass one of the existing `FXFormCell` classes, which all inherit from `FXFormBaseCell`. These cell classes contain a lot of logic for handling the various different field types, but expose the views and controls used, for easy customisation.
+There are two levels of customisation possible for cells. The simplest option is to subclass one of the existing `FXFormCell` classes, which all inherit from `FXFormBaseCell`. These cell classes contain a lot of logic for handling the various different field types, but expose the views and controls used, for easy customisation. If you subclass `FXFormBaseCell` and just want to tweak the existing settings, you can call `[super update]` in your custom `update` method.
 
 If you already have a base cell class and don't want to base your cells on `FXFormBaseCell`, you can create an FXForms-compatible cell from scratch by subclassing `UITableViewCell` and adopting the `FXFormFieldCell` protocol.
 

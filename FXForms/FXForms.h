@@ -179,6 +179,10 @@ static NSString *const FXFormFieldTypeImage = @"image";
 
 @end
 
+@interface FXFormBaseCell (ForSubclassEyesOnly)
+- (void) update;
+@end
+
 
 @interface FXFormTextFieldCell : FXFormBaseCell
 
