@@ -234,7 +234,7 @@ static inline NSArray *FXFormProperties(id<FXForm> form)
                     }
                 }
                 free(typeEncoding);
-                
+
                 //add to properties
                 if (valueClass && valueType)
                 {
@@ -1065,7 +1065,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
                                        FXFormFieldTypeImage: [FXFormImagePickerCell class]} mutableCopy];
         
         _controllerClassesForFieldTypes = [@{FXFormFieldTypeDefault: [FXFormViewController class]} mutableCopy];
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
@@ -1280,7 +1280,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
 - (UITableViewCell *)tableView:(__unused UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FXFormField *field = [self fieldForIndexPath:indexPath];
-    
+
     Class cellClass = field.cell ?: [self cellClassForFieldType:field.type];
     NSString *nibName = NSStringFromClass(cellClass);
     if ([[NSBundle mainBundle] pathForResource:nibName ofType:@"nib"])
@@ -1300,7 +1300,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
         {
             style = UITableViewCellStyleValue1;
         }
-        
+
         //don't recycle cells - it would make things complicated
         return [[cellClass alloc] initWithStyle:style reuseIdentifier:nil];
     }
@@ -1312,7 +1312,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FXFormField *field = [self fieldForIndexPath:indexPath];
-    
+
     //set form field
     ((id<FXFormFieldCell>)cell).field = field;
     
@@ -1735,7 +1735,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
                          @"textField.enablesReturnKeyAutomatically": ^(UITextField *f, NSInteger v){ f.enablesReturnKeyAutomatically = !!v; },
                          @"textField.secureTextEntry": ^(UITextField *f, NSInteger v){ f.secureTextEntry = !!v; }};
     });
-    
+
     void (^block)(UITextField *f, NSInteger v) = specialCases[keyPath];
     if (block)
     {
@@ -1855,7 +1855,7 @@ static BOOL *FXFormCanSetValueForKey(id<FXForm> form, NSString *key)
     {
         value = [self.field.valueClass stringWithString:[value description]];
     }
-    
+
     self.field.value = value;
     if (self.field.action) self.field.action(self);
 }
